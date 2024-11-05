@@ -7,7 +7,7 @@
     await fetch(`http://localhost:8000/board/races/`)
       .then(r => r.json())
       .then(data => {
-        races = data;
+        races = data["races"];
       });
   })
 
