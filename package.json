@@ -22,8 +22,11 @@
 		"globals": "^15.0.0",
 		"prettier": "^3.3.2",
 		"prettier-plugin-svelte": "^3.2.6",
-		"svelte": "^5.0.0",
+		"svelte": "^5.1.11",
 		"vite": "^5.0.3",
 		"vitest": "^2.0.4"
+	},
+	"dependencies": {
+		"@sveltestrap/sveltestrap": "^6.2.7"
 	}
 }

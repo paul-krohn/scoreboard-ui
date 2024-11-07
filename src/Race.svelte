@@ -1,6 +1,8 @@
 <script>
   import RaceSummary from './RaceSummary.svelte'
   import { onMount } from "svelte";
+  import { Input } from '@sveltestrap/sveltestrap';
+
   let props = $props();
 
   let race = $state(0);
@@ -67,7 +69,7 @@
     {#each race.teams as team}
 		<label>
 			{team.name}
-      <input type="number" bind:value={team.count} min="0" max={team.to} onchange={updateScores}/>
+      <Input type="number" bind:value={team.count} min="0" max={team.to} onchange={updateScores}/>
 		</label>
     {/each}
 	</form>
