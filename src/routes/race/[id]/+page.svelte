@@ -6,6 +6,4 @@
 
 </script>
 
-<h1>Race</h1>
-
 <Race id={data.params.id} />

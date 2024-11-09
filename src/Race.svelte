@@ -61,15 +61,67 @@
     });
   }
 
+  function incrementScore(team, increment) {
+    team.count += increment;
+    updateScores()
+  }
+
 </script>
 
 <h1>{race.name}</h1>
 
-  <form method="POST">
-    {#each race.teams as team}
-		<label>
-			{team.name}
-      <Input type="number" bind:value={team.count} min="0" max={team.to} onchange={updateScores}/>
-		</label>
-    {/each}
-	</form>
+  {#each race.teams as team}
+  <div class="teamBox">
+    <div class="teamLabel">
+      {team.name}
+    </div>
+    <div>
+      <div class="scoreWrapper" style="">
+        <div class="currentScore">{team.count}</div>
+        <div class="buttons">
+          <div class="button">
+            <img class="buttonImage" src="/icons8-up-button-80.png" alt="increase score for {team.name}" onclick={() => incrementScore(team, 1)}/>
+          </div>
+          <div class="button">
+            <img class="buttonImage" src="/icons8-down-button-40.png" alt="decrease score for {team.name}" onclick={() => incrementScore(team, -1)}/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/each}
+
+  <!-- <div style="display:flex;justify-content:center;align-items:center;">
+    <div style="width:5em;"></div>
+  </div> -->
+<style>
+
+  .teamBox {
+    padding: 1em;
+  }
+
+  .teamLabel {
+    font-size: 2em;
+    padding: 20px;
+    background: #F1F1F1;
+  }
+  .currentScore {
+    font-size: 8em;
+    display: table-cell;
+  }
+  .scoreWrapper {
+    padding: 20px;
+  }
+  .buttons {
+    padding: 10px;
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+  }
+
+</style>
