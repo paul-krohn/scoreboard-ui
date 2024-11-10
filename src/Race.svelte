@@ -103,7 +103,8 @@
   .teamLabel {
     font-size: 2em;
     padding: 20px;
-    background: #F1F1F1;
+    background: #383838;
+    color: #FFFFFF;
   }
   .currentScore {
     font-size: 8em;
@@ -111,6 +112,7 @@
   }
   .scoreWrapper {
     padding: 20px;
+    background: #F1F1F1;
   }
   .buttons {
     padding: 10px;
