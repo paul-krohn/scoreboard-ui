@@ -25,16 +25,6 @@
 
   })
 
-
-  const updateScores = () => {
-    console.log("update scores called");
-    race.teams.forEach(team => {
-      console.log(`in ${race.name} team ${team.name} count is ${team.count}`);
-      updateScore(race.id, team.id, team.count);
-    })
-
-  }
-
   const updateScore = async(race_id, team_id, count) => {
     console.log(`updateScore called with: ${race_id}, ${team_id}, ${count}`);
     var post_data = {
@@ -63,7 +53,7 @@
 
   function incrementScore(team, increment) {
     team.count += increment;
-    updateScores()
+    updateScore(race.id, team.id, team.count);
   }
 
   function fargos(team) {
