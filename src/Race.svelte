@@ -84,16 +84,14 @@
     <div class="teamLabel">
       {team.name} <small>({fargos(team)})</small>
     </div>
-    <div>
-      <div class="scoreWrapper" style="">
-        <div class="currentScore">{team.count}</div>
-        <div class="buttons">
-          <div class="button">
-            <img class="buttonImage" src="/icons8-up-button-80.png" alt="increase score for {team.name}" onclick={() => incrementScore(team, 1)}/>
-          </div>
-          <div class="button">
-            <img class="buttonImage" src="/icons8-down-button-40.png" alt="decrease score for {team.name}" onclick={() => incrementScore(team, -1)}/>
-          </div>
+    <div class="scoreWrapper">
+      <div class="currentScore">{team.count}</div>
+      <div class="buttons">
+        <div class="button">
+          <img class="buttonImage" src="/icons8-up-button-80.png" alt="increase score for {team.name}" onclick={() => incrementScore(team, 1)}/>
+        </div>
+        <div class="button">
+          <img class="buttonImage" src="/icons8-down-button-40.png" alt="decrease score for {team.name}" onclick={() => incrementScore(team, -1)}/>
         </div>
       </div>
     </div>
@@ -116,6 +114,7 @@
     display: table-cell;
   }
   .scoreWrapper {
+    width: 100%;
     padding: 20px;
     background: #F1F1F1;
   }
