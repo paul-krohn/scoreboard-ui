@@ -66,6 +66,15 @@
     updateScores()
   }
 
+  function fargos(team) {
+    var fargo_list = new Array;
+    team.players.forEach(p => {
+      fargo_list.push(p.fargo);
+    })
+    console.log(`the fargos are: ${fargo_list}`);
+    return fargo_list.join(", ")
+  }
+
 </script>
 
 <h1>{race.name}</h1>
@@ -73,7 +82,7 @@
   {#each race.teams as team}
   <div class="teamBox">
     <div class="teamLabel">
-      {team.name}
+      {team.name} <small>({fargos(team)})</small>
     </div>
     <div>
       <div class="scoreWrapper" style="">
