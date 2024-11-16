@@ -99,10 +99,6 @@
     </div>
   </div>
   {/each}
-
-  <!-- <div style="display:flex;justify-content:center;align-items:center;">
-    <div style="width:5em;"></div>
-  </div> -->
 <style>
 
   .teamBox {
