@@ -21,6 +21,9 @@
     .then(r => r.json())
     .then(data => {
       csrf_token = data["token"];
+      /* also send an update; this is a hack to force the scren updater to get the race ID and do a full drow. */
+      console.log(`we are mounted ${race.id}, team id: ${race.teams[0].id}, team count:${race.teams[0].count}`);
+      updateScore(race.id, race.teams[0].id, race.teams[0].count);
     });
 
   })
