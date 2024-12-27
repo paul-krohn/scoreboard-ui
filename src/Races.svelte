@@ -1,10 +1,11 @@
 <script>
   import { onMount } from "svelte";
 	import RaceSummary from "./RaceSummary.svelte";
+  import { PUBLIC_API_URL } from '$env/static/public';
   // define the data holding variable
   let races;
   onMount(async () => {
-    await fetch(`http://localhost:8000/board/races/`)
+    await fetch(`${PUBLIC_API_URL}/board/races/`)
       .then(r => r.json())
       .then(data => {
         races = data["races"];
@@ -13,11 +14,7 @@
 
 </script>
 
-
-<h2>some races</h2>
-
 {#if races}
-{races.length}
   <ul>
   {#each races as race }
       <li>    

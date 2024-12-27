@@ -1,4 +1,5 @@
 <script>
+  import { PUBLIC_API_URL } from '$env/static/public';
   import RaceSummary from './RaceSummary.svelte'
   import { onMount } from "svelte";
   import { Input } from '@sveltestrap/sveltestrap';
@@ -11,13 +12,13 @@
   // let race; // will be populated by onMount
   onMount(async () => {
     // console.log(`going to try to get race ${id}`);
-    await fetch(`http://localhost:8080/board/race/${props.id}`)
+    await fetch(`${PUBLIC_API_URL}/board/race/${props.id}`)
     .then(r => r.json())
     .then(data => {
       race = data["race"];
     });
 
-    await fetch(`http://localhost:8080/board/login`)
+    await fetch(`${PUBLIC_API_URL}/board/login`)
     .then(r => r.json())
     .then(data => {
       csrf_token = data["token"];
@@ -47,7 +48,7 @@
       body: JSON.stringify(post_data)
     };
 
-    await fetch(`http://localhost:8080/board/race/update_score`, requestOptions)
+    await fetch(`${PUBLIC_API_URL}/board/race/update_score`, requestOptions)
     .then(r => r.json())
     .then(data => {
       race = data;
