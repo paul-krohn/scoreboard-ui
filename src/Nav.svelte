@@ -1,12 +1,12 @@
 <script>
+  import { Nav, NavItem, NavLink } from '@sveltestrap/sveltestrap';
 </script>
 
-<ul>
-  <li>
-    <a href="/races">Races</a>
-  </li>
-  <li>
-    <a href="/controls">Controls</a>
-  </li>
-</ul>
-
+<Nav tabs>
+  <NavItem>
+    <NavLink href="/races">Races</NavLink>
+  </NavItem>
+  <NavItem>
+    <NavLink href="/controls">Controls</NavLink>
+  </NavItem>
+</Nav>
