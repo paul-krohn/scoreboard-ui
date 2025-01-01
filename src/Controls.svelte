@@ -39,7 +39,7 @@
     });
   }
 </script>
-<h1>These are controls</h1>
+<h1>Controls</h1>
 
 <div class="button">
   <input type="button" alt="clear the screen" onclick={() => clearScreen()} value="Clear Display"/>
