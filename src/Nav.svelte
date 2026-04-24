@@ -7,6 +7,9 @@
     <NavLink href="/races">Races</NavLink>
   </NavItem>
   <NavItem>
+    <NavLink href="/create">Create Match</NavLink>
+  </NavItem>
+  <NavItem>
     <NavLink href="/controls">Controls</NavLink>
   </NavItem>
 </Nav>

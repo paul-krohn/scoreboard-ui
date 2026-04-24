@@ -1,8 +1,6 @@
 <script>
   import { PUBLIC_API_URL } from '$env/static/public';
-  import RaceSummary from './RaceSummary.svelte'
   import { onMount } from "svelte";
-  import { Input } from '@sveltestrap/sveltestrap';
 
   let props = $props();
 
@@ -18,7 +16,9 @@
       race = data["race"];
     });
 
-    await fetch(`${PUBLIC_API_URL}/board/login`)
+    await fetch(`${PUBLIC_API_URL}/board/login`, {
+      credentials: 'include'
+    })
     .then(r => r.json())
     .then(data => {
       csrf_token = data["token"];
@@ -39,10 +39,8 @@
     const requestOptions = {
       method: "POST",
       headers: {
-        "Access-Control-Allow-Crendentials": "true",
         "Content-Type": "application/json",
         "X-CSRFToken": csrf_token,
-        "X-Method": "POST",
       },
       credentials: 'include',
       body: JSON.stringify(post_data)
@@ -82,12 +80,12 @@
       <div class="currentScore">{team.count}</div>
       <div class="buttonWrapper">
         <div class="buttons">
-          <div class="button">
-            <img class="buttonImage" src="/icons8-up-button-80.png" alt="increase score for {team.name}" onclick={() => incrementScore(team, 1)}/>
-          </div>
-          <div class="button">
-            <img class="buttonImage" src="/icons8-down-button-40.png" alt="decrease score for {team.name}" onclick={() => incrementScore(team, -1)}/>
-          </div>
+          <button class="button" type="button" aria-label="increase score for {team.name}" onclick={() => incrementScore(team, 1)}>
+            <img class="buttonImage" src="/icons8-up-button-80.png" alt=""/>
+          </button>
+          <button class="button" type="button" aria-label="decrease score for {team.name}" onclick={() => incrementScore(team, -1)}>
+            <img class="buttonImage" src="/icons8-down-button-40.png" alt=""/>
+          </button>
         </div>
       </div>
     </div>
@@ -126,6 +124,10 @@
     align-items: center;
     justify-content: center;
     vertical-align: middle;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
   }
   .buttonWrapper {
     display: flex;

@@ -7,7 +7,9 @@
   let csrf_token = $state(1);
 
   onMount(async () => {
-    await fetch(`${PUBLIC_API_URL}/board/login`)
+    await fetch(`${PUBLIC_API_URL}/board/login`, {
+      credentials: 'include'
+    })
     .then(r => r.json())
     .then(data => {
       csrf_token = data["token"];
@@ -23,10 +25,8 @@
     const requestOptions = {
       method: "POST",
       headers: {
-        "Access-Control-Allow-Crendentials": "true",
         "Content-Type": "application/json",
         "X-CSRFToken": csrf_token,
-        "X-Method": "POST",
       },
       credentials: 'include',
       body: JSON.stringify(post_data)
@@ -34,9 +34,8 @@
 
     await fetch(`${PUBLIC_API_URL}/board/controls/clear_screen`, requestOptions)
       .then(r => r.json())
-      .then(data => {
-        race = data;
-    });
+      .then(() => {
+      });
   }
 </script>
 <h1>Controls</h1>

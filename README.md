@@ -25,6 +25,8 @@ npm run dev
 npm run dev -- --open
 ```
 
+For local development against the `scoreboard` backend and `score-wrapper` docker setup, prefer opening the UI at `http://localhost:5173` instead of `http://127.0.0.1:5173`. The backend CORS and CSRF configuration is origin-specific, and mixing `localhost` with `127.0.0.1` can cause failed requests even though both resolve to the same machine.
+
 ## Building
 
 To create a production version of your app:
