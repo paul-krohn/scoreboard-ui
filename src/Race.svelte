@@ -54,7 +54,12 @@
   }
 
   function incrementScore(team, increment) {
-    team.count += increment;
+    const nextCount = Math.max(0, team.count + increment);
+    if (nextCount === team.count) {
+      return;
+    }
+
+    team.count = nextCount;
     updateScore(race.id, team.id, team.count);
   }
 
@@ -80,11 +85,11 @@
       <div class="currentScore">{team.count}</div>
       <div class="buttonWrapper">
         <div class="buttons">
-          <button class="button" type="button" aria-label="increase score for {team.name}" onclick={() => incrementScore(team, 1)}>
-            <img class="buttonImage" src="/icons8-up-button-80.png" alt=""/>
+          <button class="button button-up" type="button" aria-label="increase score for {team.name}" onclick={() => incrementScore(team, 1)}>
+            <span aria-hidden="true">➕</span>
           </button>
-          <button class="button" type="button" aria-label="decrease score for {team.name}" onclick={() => incrementScore(team, -1)}>
-            <img class="buttonImage" src="/icons8-down-button-40.png" alt=""/>
+          <button class="button button-down" type="button" aria-label="decrease score for {team.name}" onclick={() => incrementScore(team, -1)} disabled={team.count === 0}>
+            <span aria-hidden="true">➖</span>
           </button>
         </div>
       </div>
@@ -116,18 +121,37 @@
   }
   .buttons {
     padding: 10px;
-    display: table-cell;
-    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
   }
   .button {
     display: flex;
     align-items: center;
     justify-content: center;
-    vertical-align: middle;
     background: transparent;
-    border: 0;
-    padding: 0;
+    border: 1px solid #bfbfbf;
+    border-radius: 12px;
+    color: #202020;
     cursor: pointer;
+    line-height: 1;
+  }
+  .button-up {
+    min-width: 106px;
+    min-height: 106px;
+    font-size: 3.6rem;
+    background: #ffffff;
+  }
+  .button-down {
+    min-width: 64px;
+    min-height: 64px;
+    font-size: 2.5rem;
+    align-self: center;
+    background: #f7f7f7;
+  }
+  .button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
   }
   .buttonWrapper {
     display: flex;
